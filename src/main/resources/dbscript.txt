@@ -1,0 +1,43 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS springjdbcdb;
+
+-- Switch to the database
+USE springjdbcdb;
+
+-- Create the Department table
+CREATE TABLE IF NOT EXISTS department (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    location VARCHAR(100)
+);
+
+-- Create the Employee table
+CREATE TABLE IF NOT EXISTS employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    salary DOUBLE NOT NULL,
+    departmentId INT,
+    FOREIGN KEY (departmentId) REFERENCES department(id)
+);
+
+
+-- Insert dummy data into department table
+INSERT INTO department (name, location) VALUES
+    ('HR', 'New York'),
+    ('Finance', 'London'),
+    ('Marketing', 'Paris'),
+    ('IT', 'Tokyo'),
+    ('Sales', 'Sydney');
+
+-- Insert dummy data into employee table
+INSERT INTO employee (name, salary, departmentId) VALUES
+    ('John Doe', 50000, 1),
+    ('Alice Smith', 60000, 2),
+    ('Bob Johnson', 55000, 1),
+    ('Emily Davis', 52000, 3),
+    ('Michael Wilson', 58000, 4),
+    ('Emma Brown', 53000, 3),
+    ('David Lee', 62000, 5),
+    ('Sarah Taylor', 54000, 2),
+    ('James Miller', 57000, 1),
+    ('Olivia Harris', 51000, 5);
